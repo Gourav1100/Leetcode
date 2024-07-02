@@ -13,9 +13,8 @@ impl Solution {
         }
         for (key, value) in freq_a {
             if let Some(value_b) = freq_b.get(&key.to_owned()) {
-                for _ in 0..cmp::min(value, *value_b) {
-                    result.push(key.to_owned());
-                }
+                let current: Vec<i32> = vec![key.to_owned(); cmp::min(value, *value_b) as usize];
+                result.extend(current);
             }
         }
         result
