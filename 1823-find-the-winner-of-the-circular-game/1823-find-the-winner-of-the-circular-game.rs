@@ -3,8 +3,9 @@ impl Solution {
         let mut circle: Vec<i32> = vec![0; n as usize];
         let mut last: usize = 0;
         let mut res = -1;
+        let mut step = 0;
         for i in 0..((n - 1) as usize) {
-            let mut step = k as usize;
+            step = k as usize;
             while step != 0 {
                 if circle[last] == 0 {
                     step -= 1;
