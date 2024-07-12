@@ -7,24 +7,28 @@ impl Solution {
         };
         let mut stack: Vec<char> = Vec::new();
         let mut res = 0;
+        let mut last = -1;
         for ch in s.chars() {
-            let last = (stack.len() - 1) as i32;
-            if last >= 0 && stack[last as usize] == maximizeStringFirst && ch == maximizeStringSecond {
+            if last > -1 && stack[last as usize] == maximizeStringFirst && ch == maximizeStringSecond {
                 res += max;
                 stack.pop();
+                last -= 1;
             } else {
                 stack.push(ch);
+                last += 1;
             }
         }
         s = stack.iter().collect();
+        last = -1;
         stack.clear();
         for ch in s.chars() {
-            let last = (stack.len() - 1) as i32;
             if last >= 0 && stack[last as usize] == minimizeStringFirst && ch == minimizeStringSecond {
                 res += min;
                 stack.pop();
+                last -= 1;
             } else {
                 stack.push(ch);
+                last += 1;
             }
         }
         res
