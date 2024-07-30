@@ -2,8 +2,12 @@ class Solution {
 public:
     int minimumDeletions(string s) {
         int n = s.size();
-        vector<vector<int>> dp(n + 1, vector<int>(2, 0));
+        int **dp = new int*[n + 1];
+        dp[n] = new int[2];
+        memset(dp[n], 0, sizeof(dp[n]));
         for(int i = s.size() - 1; i >= 0; i--) {
+            dp[i] = new int[2];
+            memset(dp[i], 0, sizeof(dp[i]));
             for (int j = 0; j < 2; j++) {
                 if (!j && s[i] == 'b') {
                     dp[i][j] = min(1 + dp[i + 1][j], dp[i + 1][!j]);
