@@ -3,10 +3,7 @@ public:
     int countSeniors(vector<string>& details) {
         int result = 0;
         for(auto& item: details) {
-            string temp = "";
-            temp += item[11];
-            temp += item[12];
-            if (temp > "60") {
+            if ((item[11] == '6' && item[12] > '0') || item[11] > '6') {
                 result++;
             }
         }
