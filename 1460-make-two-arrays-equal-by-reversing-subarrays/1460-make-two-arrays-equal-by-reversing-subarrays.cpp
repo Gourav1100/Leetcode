@@ -1,7 +1,7 @@
 class Solution {
 public:
     bool canBeEqual(vector<int>& target, vector<int>& arr) {
-        unordered_map<int, int> mp;
+        int mp[1001] = {};
         for(auto& num: target) {
             mp[num]++;
         }
