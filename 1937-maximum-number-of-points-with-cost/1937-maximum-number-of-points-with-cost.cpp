@@ -1,19 +1,23 @@
 class Solution {
 public:
     long long maxPoints(vector<vector<int>>& points) {
-        int n = points.size(), m = points[0].size();
+        int n = points.size(), m = points[0].size(), i = 0, j = 0;
         vector<long long> prev(m, 0);
         vector<long long> left(m, 0);
         vector<long long> right(m, 0);
-        for(int i = 0; i < n; i++) {
-            for(int j = 0; j < m; j++) {
-                left[j] = max(j - 1 >= 0 ? left[j - 1] - 1 : INT_MIN, prev[j]);
-                right[m - 1 - j] = max((m - j < m) ? (right[m - j] - 1) : INT_MIN, prev[m - j - 1]);
+        long long MAX = 0;
+        while(i++ < n) {
+            while(j++ < m) {
+                left[j - 1] = max(j - 2 >= 0 ? left[j - 2] - 1 : 0, prev[j - 1]);
+                right[m - j] = max((m - j + 1 < m) ? (right[m - j + 1] - 1) : 0, prev[m - j]);
             }
-            for(int j = 0; j < m; j++) {
-                prev[j] = points[i][j] + max(left[j], right[j]);
+            j--;
+            while(--j >= 0) {
+                prev[j] = points[i - 1][j] + max(left[j], right[j]);
+                MAX = MAX < prev[j] ? prev[j] : MAX;
             }
+            j++;
         }
-        return *max_element(prev.begin(), prev.end());
+        return MAX;
     }
 };
