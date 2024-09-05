@@ -5,14 +5,14 @@ public:
         for(auto& num: rolls) {
             sum -= num;
         }
-        if (sum / n > 6 || sum / n <= 0 || (sum / n == 6 && sum % n != 0)) {
+        int quo = sum / n, rem = sum % n, index = 0;
+        if (quo > 6 || quo <= 0 || (quo == 6 && rem != 0)) {
             return {};
         }
-        vector<int> result(n, sum / n);
-        int remaining = sum % n, index = 0;
-        while(remaining != 0) {
+        vector<int> result(n, quo);
+        while(rem != 0) {
             result[index++]++;
-            remaining--;
+            rem--;
         }
         return result;
     }
