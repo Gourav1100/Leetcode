@@ -4,7 +4,7 @@ class Solution {
     }
 public:
     int findKthNumber(int n, int k) {
-        long long current = 1;
+        int current = 1;
         while (k != 1) {
             long long count = 1, temp = 10;
             while(current * temp <= n) {
