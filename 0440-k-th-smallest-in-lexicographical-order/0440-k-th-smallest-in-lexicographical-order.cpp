@@ -1,7 +1,7 @@
+long long min(long long a, long long b) {
+    return a > b ? b : a;
+}
 class Solution {
-    static long long min(long long a, long long b) {
-        return a > b ? b : a;
-    }
 public:
     int findKthNumber(int n, int k) {
         int current = 1;
