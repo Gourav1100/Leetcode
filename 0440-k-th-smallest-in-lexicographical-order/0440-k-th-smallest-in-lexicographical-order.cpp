@@ -1,25 +1,18 @@
 class Solution {
-    long long min(long long a, long long b) {
+    static long long min(long long a, long long b) {
         return a > b ? b : a;
     }
 public:
     int findKthNumber(int n, int k) {
         long long current = 1;
         while (k != 1) {
-            long long count = 1, temp = current * 10, level_elements = 9;
-            while(temp <= n) {
-                count += min(temp + level_elements, n) - temp + 1;
-                level_elements = level_elements * 10 + 9;
+            long long count = 1, temp = 10;
+            while(current * temp <= n) {
+                count += min(current * temp + temp - 1, n) - (current * temp) + 1;
                 temp = temp * 10;
             }
-            // cout << current << " " << count << " " << k << endl;
-            if (count >= k) {
-                current = current * 10;
-                k--;
-            } else {
-                k -= count;
-                current++;
-            }
+            current = count >= k ? current * 10 : current + 1;
+            k -= count >= k ? 1 : count;
         }
         return current;
     }
