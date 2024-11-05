@@ -18,7 +18,7 @@ public:
         count.push_back(c);
         int result = 0;
         for(int i = 0; i < chars.size(); i++) {
-            if (count[i] % 2) {
+            if (count[i] >> 1 << 1 != count[i]) {
                 count[i]--;
                 result++;
                 count[i + 1]++;
