@@ -2,11 +2,10 @@ class Solution {
 public:
     vector<int> closestPrimes(int left, int right) {
         static int seive[1000001] = {};
-        for(int i = 2; i < right + 1; i++) {
-            if (seive[i] == 0) {
-                for(int j = i + i; j < right + 1; j += i) {
-                    seive[j] = 1;
-                }
+        for(int i = 2; i <= right; i++) {
+            if (seive[i] == 1) continue;
+            for(int j = i + i; j <= right; j += i) {
+                seive[j] = 1;
             }
         }
         int num1 = -1, num2 = -1, res_0 = -1, res_1 = -1;
