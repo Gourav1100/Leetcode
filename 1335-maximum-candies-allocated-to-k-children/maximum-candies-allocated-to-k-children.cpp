@@ -14,7 +14,6 @@ public:
                 end = mid - 1;
             }
         }
-        // cout << front << " " << end << endl;
         return end;
     }
 };
