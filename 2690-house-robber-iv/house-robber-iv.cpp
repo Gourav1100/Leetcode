@@ -18,12 +18,10 @@ public:
         vector<int> visited(n + 1, 0);
         for(int i = 0; i < n; i++) {
             allowed += nums[i] <= mid;
-            if (!visited[i + 1] && (i == 0 || !visited[i - 1]) && nums[i] <= mid) {
-                visited[i] = 1;
-                count++;
-            }
+            if (visited[i + 1] || (i != 0 && visited[i - 1]) || nums[i] > mid) continue;
+            visited[i] = 1;
+            count++;
         }
-        // cout << mid << " " << count << " " << allowed << endl;
         return count >= k || (allowed - count >= k);
     }
 };
