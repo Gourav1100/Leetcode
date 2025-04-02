@@ -1,5 +1,5 @@
 class Solution {
-    long long max(long long a, long long b) {
+    static long long max(long long a, long long b) {
         return a > b ? a : b;
     }
 public:
