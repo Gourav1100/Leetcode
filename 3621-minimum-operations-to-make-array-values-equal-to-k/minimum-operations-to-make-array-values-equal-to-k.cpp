@@ -1,13 +1,13 @@
 class Solution {
 public:
     int minOperations(vector<int>& nums, int k) {
-        unordered_map<int, int> freq;
+        int freq[101] = {};
+        int count = 0;
         for(auto& item: nums) {
             if (item < k) return -1;
-            if (item != k) {
-                freq[item]++;
-            }
+            freq[item]++;
+            count += item != k && freq[item] == 1;
         }
-        return freq.size();
+        return count;
     }
 };
