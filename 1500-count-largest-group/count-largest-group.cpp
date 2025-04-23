@@ -2,7 +2,7 @@ class Solution {
 public:
     int countLargestGroup(int n) {
         unordered_map<int, int> sums;
-        int MAX = 0;
+        int MAX = 0, count = 0;
         for(int i = 1; i <= n; i++) {
             int sum = 0, temp = i;
             while(temp != 0) {
@@ -10,11 +10,12 @@ public:
                 temp /= 10;
             }
             sums[sum]++;
-            MAX = max(MAX, sums[sum]);
-        }
-        int count = 0;
-        for(auto& item: sums) {
-            count += item.second == MAX;
+            if (MAX == sums[sum]) {
+                count++;
+            } else if (MAX < sums[sum]) {
+                MAX = sums[sum];
+                count = 1;
+            }
         }
         return count;
     }
