@@ -12,9 +12,8 @@ public:
             }
         }
         for(int i = 1; i < 7; i++) {
-            if (freq[i] == n) {
-                res = min(res, min(n - freq_top[i], n - freq_bottom[i]));
-            }
+            if (freq[i] != n) continue;
+            res = min(res, min(n - freq_top[i], n - freq_bottom[i]));
         }
         if (res == INT_MAX) return -1;
         return res;
