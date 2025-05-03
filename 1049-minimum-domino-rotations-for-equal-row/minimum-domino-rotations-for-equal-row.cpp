@@ -1,7 +1,7 @@
 class Solution {
 public:
     int minDominoRotations(vector<int>& tops, vector<int>& bottoms) {
-        int n = tops.size();
+        int n = tops.size(), res = INT_MAX;
         int freq[7] = {}, freq_top[7] = {}, freq_bottom[7] = {};
         for(int i = 0; i < n; i++) {
             freq[tops[i]]++;
@@ -11,7 +11,6 @@ public:
                 freq[bottoms[i]]++;
             }
         }
-        int res = INT_MAX;
         for(int i = 1; i < 7; i++) {
             if (freq[i] == n) {
                 res = min(res, min(n - freq_top[i], n - freq_bottom[i]));
