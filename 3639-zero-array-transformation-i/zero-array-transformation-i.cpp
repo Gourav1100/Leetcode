@@ -1,8 +1,8 @@
 class Solution {
 public:
     bool isZeroArray(vector<int>& nums, vector<vector<int>>& queries) {
-        vector<int> temp(nums.size(), 0);
-        vector<int> tempp(nums.size(), 0);
+        int temp[100001] = {};
+        int tempp[100001] = {};
         for(auto& query: queries) {
             temp[query[0]]++;
             tempp[query[1]]--;
