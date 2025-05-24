@@ -1,7 +1,7 @@
 class Solution {
 public:
     vector<int> findWordsContaining(vector<string>& words, char x) {
-        int freqs[51][26] = {}, index = 0;
+        int freqs[51][26] = {}, index = 0, n = words.size();
         vector<int> result;
         for(auto& word: words) {
             for(auto& ch: word) {
@@ -9,7 +9,7 @@ public:
             }
             index++;
         }
-        for(index = 0; index < 50; index++) {
+        for(index = 0; index < n; index++) {
             if (freqs[index][x - 'a']) {
                 result.push_back(index);
             }
