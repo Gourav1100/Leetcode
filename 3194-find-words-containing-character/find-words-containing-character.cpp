@@ -1,18 +1,16 @@
 class Solution {
 public:
     vector<int> findWordsContaining(vector<string>& words, char x) {
-        int freqs[51][26] = {}, index = 0, n = words.size();
+        int n = words.size(), index = 0;
         vector<int> result;
         for(auto& word: words) {
             for(auto& ch: word) {
-                freqs[index][ch - 'a']++;
+                if (ch == x) {
+                    result.push_back(index);
+                    break;
+                }
             }
             index++;
-        }
-        for(index = 0; index < n; index++) {
-            if (freqs[index][x - 'a']) {
-                result.push_back(index);
-            }
         }
         return result;
     }
